@@ -1,0 +1,29 @@
+.Form {
+  display: flex;
+  align-items: center;
+  /* padding: 2em; */
+  border: 2px solid green;
+}
+
+.Form input {
+  width: 50%;
+  height: 50%;
+  border-radius: 1.5em;
+  border-style: dotted;
+  border-width: 0.2em;
+  border: 5px solid black;
+}
+
+/* .Form button { */
+/* align-self: center; */
+/* display: flex; */
+/* text-align: center;
+  width: 4em; */
+/* padding: 1.5em; */
+/* margin: 1em;
+  border: 0px; */
+/* border-radius: 10px;
+  color: white;
+  background-color: gray; */
+/* margin-bottom: 3em; */
+/* } */

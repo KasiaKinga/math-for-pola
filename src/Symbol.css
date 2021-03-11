@@ -1,0 +1,7 @@
+.Symbol {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #f06292;
+  /* border: 2px solid black; */
+}
