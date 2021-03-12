@@ -1,29 +1,33 @@
 .Form {
   display: flex;
   align-items: center;
-  /* padding: 2em; */
-  border: 2px solid green;
+  justify-content: center;
+}
+
+.Form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* outline: none; */
 }
 
 .Form input {
-  width: 50%;
-  height: 50%;
-  border-radius: 1.5em;
-  border-style: dotted;
-  border-width: 0.2em;
-  border: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue;
+  /* height: 2em; */
+  width: 2em;
+  /* border-radius: 0.4em; */
+  font-size: 2em;
+  /* outline: none; */
+  /* border-bottom: double; */
+  /* border: none; */
 }
 
-/* .Form button { */
-/* align-self: center; */
-/* display: flex; */
-/* text-align: center;
-  width: 4em; */
-/* padding: 1.5em; */
-/* margin: 1em;
-  border: 0px; */
-/* border-radius: 10px;
-  color: white;
-  background-color: gray; */
-/* margin-bottom: 3em; */
-/* } */
+input:focus {
+  border-color: green;
+}

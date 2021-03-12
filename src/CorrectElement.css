@@ -1,0 +1,13 @@
+.CorrectBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a4dd00;
+  color: white;
+  width: 100vw;
+  height: 8em;
+  color: "black";
+  font-size: 1em;
+  text-align: center;
+  color: black;
+}

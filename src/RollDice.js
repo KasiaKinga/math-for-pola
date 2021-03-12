@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import Die from "./Die";
+import CorrectElement from "./CorrectElement";
+import ProgressBar from "./ProgressBar";
+import Confetti from "./Confetti";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
+import IncorrectElement from "./IncorrectElement";
 
 class RollDice extends Component {
   static defaultProps = {
@@ -16,10 +20,13 @@ class RollDice extends Component {
       sum: 0,
       isRolling: false,
       title: "",
+      completionStatus: "",
+      percentage: 0,
     };
     this.roll = this.roll.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.callFunction = this.callFunction.bind(this);
   }
 
   // componentDidMount() {
@@ -28,15 +35,37 @@ class RollDice extends Component {
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+      completionStatus: "",
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    if (parseInt(this.state.title) === this.state.sum) {
-      alert("Correct");
+  callFunction(textInButton) {
+    if (textInButton === "Check") {
+      this.handleSubmit();
     } else {
-      alert("Try again");
+      this.roll();
+    }
+  }
+  handleSubmit() {
+    // event.preventDefault();
+    if (parseInt(this.state.title) === this.state.sum) {
+      // if (this.state.percentage === 80) {
+      //   this.setState({
+      //     completionStatus: "",
+      //     percentage: this.state.percentage + 20,
+      //   });
+      // }
+
+      // alert("Correct");
+      this.setState({
+        completionStatus: "correct",
+        percentage: this.state.percentage + 20,
+      });
+      // setTimeout(() => {
+      //   this.setState({ completionStatus: "" });
+      // }, 3000);
+    } else {
+      this.setState({ completionStatus: "incorrect" });
     }
     this.setState({ title: "" });
   }
@@ -54,6 +83,7 @@ class RollDice extends Component {
       die2: newDie2,
       sum: randomIdx1 + randomIdx2 + 2,
       isRolling: true,
+      completionStatus: "",
     });
 
     setTimeout(() => {
@@ -62,16 +92,33 @@ class RollDice extends Component {
   }
 
   render() {
+    let textForButton;
+    if (this.state.isRolling) {
+      textForButton = "Rolling";
+    } else if (this.state.title) {
+      textForButton = "Check";
+    } else {
+      textForButton = "Roll dice";
+    }
+
+    let animatedElement;
+    if (this.state.completionStatus === "correct") {
+      animatedElement = <CorrectElement />;
+    } else if (this.state.completionStatus === "incorrect") {
+      animatedElement = <IncorrectElement />;
+    } else {
+      animatedElement = "";
+    }
     return (
       <div className="RollDice">
+        {this.state.percentage === 100 && <Confetti />}
         <div className="RollDice-container">
           <Die face={this.state.die1} rolling={this.state.isRolling} />
           <i className="Symbol fas fa-plus"></i>
 
           <Die face={this.state.die2} rolling={this.state.isRolling} />
-          <i className="Symbol fas fa-equals"></i>
-
-          {/* <div className="Form"> */}
+        </div>
+        <div className="Form">
           <form>
             <input
               type="text"
@@ -80,19 +127,18 @@ class RollDice extends Component {
               onChange={this.handleChange}
               placeholder="?"
             />
-            {/* <div className="Check-button"> */}
-            {/* <button type="submit">Check</button> */}
-            {/* </div> */}
           </form>
-          {/* </div> */}
         </div>
-
-        
-        <button onClick={this.handleSubmit}>Check if correct</button>
-
-        <button onClick={this.roll} disabled={this.state.isRolling}>
-          {this.state.isRolling ? "Rolling.." : "Roll Dice!"}
+        <button
+          onClick={() => this.callFunction(textForButton)}
+          disabled={this.state.isRolling}
+        >
+          {textForButton}
         </button>
+        <div>{animatedElement}</div>
+        <div style={{ padding: "1em" }}>
+          <ProgressBar percentage={this.state.percentage} />
+        </div>
       </div>
     );
   }
