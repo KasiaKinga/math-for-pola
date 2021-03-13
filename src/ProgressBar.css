@@ -1,8 +1,6 @@
 .progress-bar {
   position: relative;
   height: 1.5em;
-  /* width: 80vw; */
-  /* max-width: 80%; */
   margin-left: 2em;
   margin-right: 2em;
   border-radius: 50px;
