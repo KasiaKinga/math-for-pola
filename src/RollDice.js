@@ -10,6 +10,9 @@ import "./Form.css";
 import "./Number.css";
 import IncorrectElement from "./IncorrectElement";
 
+const idx1 = Math.floor(Math.random() * 6);
+const idx2 = Math.floor(Math.random() * 6);
+
 class RollDice extends Component {
   static defaultProps = {
     sides: ["one", "two", "three", "four", "five", "six"],
@@ -17,9 +20,19 @@ class RollDice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      die1: "one",
-      die2: "one",
-      sum: 0,
+      // die1: this.props.sides[
+      //   Math.floor(Math.random() * this.props.sides.length)
+      // ],
+      // die2: this.props.sides[
+      //   Math.floor(Math.random() * this.props.sides.length)
+      // ],
+      die1: this.props.sides[idx1],
+      die2: this.props.sides[idx2],
+      sum: idx1 + idx2 + 2,
+      // sum:
+      //   this.props.sides.indexOf(this.state.die1) +
+      //   this.props.sides.indexOf(this.state.die2) +
+      //   2,
       isRolling: false,
       title: "",
       completionStatus: "",
@@ -27,8 +40,9 @@ class RollDice extends Component {
     };
     this.roll = this.roll.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.callFunction = this.callFunction.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.callFunction = this.callFunction.bind(this);
+    this.checkNumber = this.checkNumber.bind(this);
   }
 
   handleChange(event) {
@@ -45,18 +59,18 @@ class RollDice extends Component {
       this.roll();
     }
   }
-  handleSubmit() {
-    // event.preventDefault();
-    if (parseInt(this.state.title) === this.state.sum) {
-      this.setState({
-        completionStatus: "correct",
-        percentage: this.state.percentage + 20,
-      });
-    } else {
-      this.setState({ completionStatus: "incorrect" });
-    }
-    this.setState({ title: "" });
-  }
+  // handleSubmit() {
+  //   // event.preventDefault();
+  //   if (parseInt(this.state.title) === this.state.sum) {
+  //     this.setState({
+  //       completionStatus: "correct",
+  //       percentage: this.state.percentage + 20,
+  //     });
+  //   } else {
+  //     this.setState({ completionStatus: "incorrect" });
+  //   }
+  //   this.setState({ title: "" });
+  // }
 
   roll() {
     // pick 2 new rolls
@@ -65,6 +79,7 @@ class RollDice extends Component {
 
     const newDie1 = this.props.sides[randomIdx1];
     const newDie2 = this.props.sides[randomIdx2];
+    console.log("sum", randomIdx1 + randomIdx2 + 2);
     // set state with new rolls and sum
     this.setState({
       die1: newDie1,
@@ -79,14 +94,28 @@ class RollDice extends Component {
     }, 1000);
   }
 
+  checkNumber(num) {
+    console.log(num);
+    console.log(this.state.sum);
+    if (num === this.state.sum) {
+      this.setState({
+        completionStatus: "correct",
+        percentage: this.state.percentage + 20,
+      });
+    } else {
+      this.setState({ completionStatus: "incorrect" });
+    }
+    this.setState({ title: "" });
+  }
   render() {
+    console.log("sum here", this.state.sum);
     let textForButton;
     if (this.state.isRolling) {
-      textForButton = "Rolling";
+      textForButton = "...";
     } else if (this.state.title) {
       textForButton = "Check";
     } else {
-      textForButton = "Roll dice";
+      textForButton = "Rzuć kostką";
     }
 
     let animatedElement;
@@ -111,7 +140,13 @@ class RollDice extends Component {
         <div className="Numbers-container">
           {/* <ul> */}
           {numbers.map((num) => {
-            return <Number number={num} />;
+            return (
+              <Number
+                key={num}
+                number={num}
+                onClick={() => this.checkNumber(num)}
+              />
+            );
           })}
           {/* </ul> */}
         </div>
@@ -130,7 +165,7 @@ class RollDice extends Component {
 
         <button
           className="Roll-button"
-          onClick={() => this.callFunction(textForButton)}
+          onClick={() => this.roll()}
           disabled={this.state.isRolling}
         >
           {textForButton}

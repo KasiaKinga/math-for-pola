@@ -5,7 +5,7 @@ import "./IncorrectElement.css";
 function IncorrectElement() {
   const props = useSpring({
     from: { marginTop: -750 },
-    to: { marginTop: -500 },
+    to: { marginTop: -680 },
   });
 
   return (
