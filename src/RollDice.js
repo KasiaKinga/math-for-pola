@@ -29,9 +29,6 @@ class RollDice extends Component {
     this.callFunction = this.callFunction.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.roll();
-  // }
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -49,21 +46,10 @@ class RollDice extends Component {
   handleSubmit() {
     // event.preventDefault();
     if (parseInt(this.state.title) === this.state.sum) {
-      // if (this.state.percentage === 80) {
-      //   this.setState({
-      //     completionStatus: "",
-      //     percentage: this.state.percentage + 20,
-      //   });
-      // }
-
-      // alert("Correct");
       this.setState({
         completionStatus: "correct",
         percentage: this.state.percentage + 20,
       });
-      // setTimeout(() => {
-      //   this.setState({ completionStatus: "" });
-      // }, 3000);
     } else {
       this.setState({ completionStatus: "incorrect" });
     }
