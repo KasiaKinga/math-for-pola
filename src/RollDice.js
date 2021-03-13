@@ -97,6 +97,15 @@ class RollDice extends Component {
     }
     return (
       <div className="RollDice">
+        {/* <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+
+            border: "2px red solid",
+          }}
+        > */}
         {this.state.percentage === 100 && <Confetti />}
         <div className="RollDice-container">
           <Die face={this.state.die1} rolling={this.state.isRolling} />
@@ -104,6 +113,7 @@ class RollDice extends Component {
 
           <Die face={this.state.die2} rolling={this.state.isRolling} />
         </div>
+
         <div className="Form">
           <form>
             <input
@@ -115,16 +125,29 @@ class RollDice extends Component {
             />
           </form>
         </div>
+
         <button
           onClick={() => this.callFunction(textForButton)}
           disabled={this.state.isRolling}
         >
           {textForButton}
         </button>
-        <div>{animatedElement}</div>
-        <div style={{ padding: "1em" }}>
+
+        <div
+          style={{
+            // display: "flex",
+            // justifyContent: "center",
+            width: "100%",
+            textAlign: "center",
+            border: "2px red solid",
+
+            // width: "80vw",
+          }}
+        >
           <ProgressBar percentage={this.state.percentage} />
         </div>
+        <div>{animatedElement}</div>
+        {/* </div> */}
       </div>
     );
   }
