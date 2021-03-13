@@ -4,12 +4,12 @@ import "./IncorrectElement.css";
 
 function IncorrectElement() {
   const props = useSpring({
-    from: { marginTop: -750 },
-    to: { marginTop: -680 },
+    from: { marginTop: "-20vh" },
+    to: { marginTop: "1vh" },
   });
 
   return (
-    <div>
+    <div style={{ background: "lightskyblue" }}>
       <animated.div style={props}>
         <h1 className="IncorrectBar">
           Jesteś blisko. <br />

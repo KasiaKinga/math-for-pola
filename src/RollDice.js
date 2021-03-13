@@ -131,6 +131,15 @@ class RollDice extends Component {
     return (
       <div className="RollDice">
         {this.state.percentage === 100 && <Confetti />}
+        <div
+          style={{
+            top: 0,
+            width: "100%",
+            position: "absolute",
+          }}
+        >
+          {animatedElement}
+        </div>
         <div className="RollDice-container">
           <Die face={this.state.die1} rolling={this.state.isRolling} />
           <i className="Symbol fas fa-plus"></i>
@@ -174,7 +183,6 @@ class RollDice extends Component {
         <div className="Progress-bar-container">
           <ProgressBar percentage={this.state.percentage} />
         </div>
-        <div>{animatedElement}</div>
       </div>
     );
   }
