@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import Die from './Die';
-import CorrectElement from './CorrectElement';
-import ProgressBar from './ProgressBar';
-import Confetti from './Confetti';
-import Number from './Number';
-import './RollDice.css';
-import './Symbol.css';
-import './Form.css';
-import './Number.css';
-import IncorrectElement from './IncorrectElement';
+import React, { Component } from "react";
+import Die from "./Die";
+import CorrectElement from "./CorrectElement";
+import ProgressBar from "./ProgressBar";
+import Confetti from "./Confetti";
+import Number from "./Number";
+import "./RollDice.css";
+import "./Symbol.css";
+import "./Form.css";
+import "./Number.css";
+import IncorrectElement from "./IncorrectElement";
 
 const idx1 = Math.floor(Math.random() * 6);
 const idx2 = Math.floor(Math.random() * 6);
 
 class RollDice extends Component {
   static defaultProps = {
-    sides: ['one', 'two', 'three', 'four', 'five', 'six'],
+    sides: ["one", "two", "three", "four", "five", "six"],
   };
   constructor(props) {
     super(props);
@@ -34,8 +34,8 @@ class RollDice extends Component {
       //   this.props.sides.indexOf(this.state.die2) +
       //   2,
       isRolling: false,
-      title: '',
-      completionStatus: '',
+      title: "",
+      completionStatus: "",
       percentage: 0,
     };
     this.roll = this.roll.bind(this);
@@ -48,12 +48,12 @@ class RollDice extends Component {
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
-      completionStatus: '',
+      completionStatus: "",
     });
   }
 
   callFunction(textInButton) {
-    if (textInButton === 'Check') {
+    if (textInButton === "Check") {
       this.handleSubmit();
     } else {
       this.roll();
@@ -79,14 +79,14 @@ class RollDice extends Component {
 
     const newDie1 = this.props.sides[randomIdx1];
     const newDie2 = this.props.sides[randomIdx2];
-    console.log('sum', randomIdx1 + randomIdx2 + 2);
+    console.log("sum", randomIdx1 + randomIdx2 + 2);
     // set state with new rolls and sum
     this.setState({
       die1: newDie1,
       die2: newDie2,
       sum: randomIdx1 + randomIdx2 + 2,
       isRolling: true,
-      completionStatus: '',
+      completionStatus: "",
     });
 
     setTimeout(() => {
@@ -99,32 +99,32 @@ class RollDice extends Component {
     console.log(this.state.sum);
     if (num === this.state.sum) {
       this.setState({
-        completionStatus: 'correct',
+        completionStatus: "correct",
         percentage: this.state.percentage + 20,
       });
     } else {
-      this.setState({ completionStatus: 'incorrect' });
+      this.setState({ completionStatus: "incorrect" });
     }
-    this.setState({ title: '' });
+    this.setState({ title: "" });
   }
   render() {
-    console.log('sum here', this.state.sum);
+    console.log("sum here", this.state.sum);
     let textForButton;
     if (this.state.isRolling) {
-      textForButton = '...';
+      textForButton = "...";
     } else if (this.state.title) {
-      textForButton = 'Check';
+      textForButton = "Check";
     } else {
-      textForButton = 'Rzuć kostką';
+      textForButton = "Rzuć kostką";
     }
 
     let animatedElement;
-    if (this.state.completionStatus === 'correct') {
+    if (this.state.completionStatus === "correct") {
       animatedElement = <CorrectElement />;
-    } else if (this.state.completionStatus === 'incorrect') {
+    } else if (this.state.completionStatus === "incorrect") {
       animatedElement = <IncorrectElement />;
     } else {
-      animatedElement = '';
+      animatedElement = "";
     }
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -134,8 +134,8 @@ class RollDice extends Component {
         <div
           style={{
             top: 0,
-            width: '100%',            
-            position: 'absolute',
+            width: "100%",
+            position: "absolute",
           }}
         >
           {animatedElement}
