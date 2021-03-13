@@ -37,6 +37,7 @@ class RollDice extends Component {
       title: "",
       completionStatus: "",
       percentage: 0,
+      buttonColors: {},
     };
     this.roll = this.roll.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -87,6 +88,7 @@ class RollDice extends Component {
       sum: randomIdx1 + randomIdx2 + 2,
       isRolling: true,
       completionStatus: "",
+      buttonColors: {},
     });
 
     setTimeout(() => {
@@ -95,20 +97,24 @@ class RollDice extends Component {
   }
 
   checkNumber(num) {
-    console.log(num);
-    console.log(this.state.sum);
     if (num === this.state.sum) {
       this.setState({
         completionStatus: "correct",
         percentage: this.state.percentage + 20,
+        buttonColors: { ...this.state.buttonColors, ...{ [num]: "#a4dd00" } },
       });
     } else {
-      this.setState({ completionStatus: "incorrect" });
+      this.setState({
+        completionStatus: "incorrect",
+        buttonColors: {
+          ...this.state.buttonColors,
+          ...{ [num]: "lightskyblue" },
+        },
+      });
     }
     this.setState({ title: "" });
   }
   render() {
-    console.log("sum here", this.state.sum);
     let textForButton;
     if (this.state.isRolling) {
       textForButton = "...";
@@ -128,6 +134,7 @@ class RollDice extends Component {
     }
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
     return (
       <div className="RollDice">
         {this.state.percentage === 100 && <Confetti />}
@@ -153,6 +160,7 @@ class RollDice extends Component {
               <Number
                 key={num}
                 number={num}
+                color={this.state.buttonColors[num]}
                 onClick={() => this.checkNumber(num)}
               />
             );
