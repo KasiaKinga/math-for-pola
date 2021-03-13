@@ -1,0 +1,22 @@
+.Numbers-container {
+  display: flex;
+  justify-content: center;
+  /* max-width: 60%; */
+  /* min-width: 40%; */
+  flex-wrap: wrap;
+  padding-left: 2em;
+  padding-right: 2em;
+  /* border: 2px solid red; */
+}
+
+.Number-element {
+  width: 2em;
+  height: 2em;
+  margin: 0.2em;
+  border: 2px solid #888888;
+  font-size: 1.2em;
+  border-radius: 0.3em;
+  background: white;
+  color: #888888;
+  box-shadow: 2px 3px #888888;
+}

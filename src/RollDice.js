@@ -3,9 +3,11 @@ import Die from "./Die";
 import CorrectElement from "./CorrectElement";
 import ProgressBar from "./ProgressBar";
 import Confetti from "./Confetti";
+import Number from "./Number";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
+import "./Number.css";
 import IncorrectElement from "./IncorrectElement";
 
 class RollDice extends Component {
@@ -95,6 +97,8 @@ class RollDice extends Component {
     } else {
       animatedElement = "";
     }
+
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     return (
       <div className="RollDice">
         {this.state.percentage === 100 && <Confetti />}
@@ -104,7 +108,15 @@ class RollDice extends Component {
           <Die face={this.state.die2} rolling={this.state.isRolling} />
         </div>
 
-        <div className="Form">
+        <div className="Numbers-container">
+          {/* <ul> */}
+          {numbers.map((num) => {
+            return <Number number={num} />;
+          })}
+          {/* </ul> */}
+        </div>
+
+        {/* <div className="Form">
           <form>
             <input
               type="text"
@@ -114,9 +126,10 @@ class RollDice extends Component {
               placeholder="?"
             />
           </form>
-        </div>
+        </div> */}
 
         <button
+          className="Roll-button"
           onClick={() => this.callFunction(textForButton)}
           disabled={this.state.isRolling}
         >

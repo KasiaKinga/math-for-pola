@@ -16,7 +16,7 @@
   /* border: 2px solid green; */
 }
 
-.RollDice button {
+.Roll-button {
   align-self: center;
   width: 15em;
   padding: 1.5em;
@@ -26,7 +26,7 @@
   background-color: darkslateblue;
 }
 
-.RollDice button:hover {
+.Roll-button:hover {
   background-color: orange;
   cursor: pointer;
 }
@@ -35,3 +35,4 @@
   width: 100%;
   text-align: center;
 }
+
