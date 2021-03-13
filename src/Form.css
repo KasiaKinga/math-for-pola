@@ -1,0 +1,27 @@
+.Form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue;
+  width: 2em;
+  font-size: 2em;
+}
+
+input:focus {
+  border-color: green;
+}

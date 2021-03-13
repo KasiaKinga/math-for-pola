@@ -1,0 +1,11 @@
+.IncorrectBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: lightskyblue;
+  width: 100vw;
+  height: 8em;
+  color: "white";
+  font-size: 1em;
+  text-align: center;
+}

@@ -1,0 +1,94 @@
+.Die {
+  font-size: 5em;
+  padding: 0.3em;
+  color: slateblue;
+}
+
+.shaking {
+  animation-name: wobble;
+  animation-duration: 1s;
+}
+
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/*---------- TABLET ----------*/
+/* Change the background colors below */
+/* @media (max-width: 767px) {
+  .Die {
+    font-size: 5em;
+    padding: 0.4em;
+    color: slateblue;
+  }
+} */
+
+/*---------- Monitors ----------*/
+@media (min-width: 768px) {
+  .Die {
+    font-size: 9em;
+    padding: 0.4em;
+    color: slateblue;
+  }
+
+  .shaking {
+    animation-name: wobble;
+    animation-duration: 1s;
+  }
+
+  @keyframes wobble {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    15% {
+      transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    }
+
+    30% {
+      transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    }
+
+    45% {
+      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    }
+
+    60% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    }
+
+    75% {
+      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    }
+
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
