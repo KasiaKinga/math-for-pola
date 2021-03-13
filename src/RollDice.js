@@ -88,6 +88,7 @@ class RollDice extends Component {
       sum: randomIdx1 + randomIdx2 + 2,
       isRolling: true,
       completionStatus: "",
+      buttonColors: {},
     });
 
     setTimeout(() => {
@@ -100,12 +101,15 @@ class RollDice extends Component {
       this.setState({
         completionStatus: "correct",
         percentage: this.state.percentage + 20,
-        buttonColors: { ..."#a4dd00" },
+        buttonColors: { ...this.state.buttonColors, ...{ [num]: "#a4dd00" } },
       });
     } else {
       this.setState({
         completionStatus: "incorrect",
-        buttonColors: { ..."lightskyblue" },
+        buttonColors: {
+          ...this.state.buttonColors,
+          ...{ [num]: "lightskyblue" },
+        },
       });
     }
     this.setState({ title: "" });
@@ -147,7 +151,7 @@ class RollDice extends Component {
               <Number
                 key={num}
                 number={num}
-                color={this.state.bottomColors[num]}
+                color={this.state.buttonColors[num]}
                 onClick={() => this.checkNumber(num)}
               />
             );
