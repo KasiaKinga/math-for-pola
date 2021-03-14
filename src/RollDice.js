@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Die from "./Die";
 import CorrectElement from "./CorrectElement";
 import ProgressBar from "./ProgressBar";
-import Confetti from "./Confetti";
 import Number from "./Number";
+import PlayAgain from "./PlayAgain";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
@@ -39,9 +39,19 @@ class RollDice extends Component {
       randomNumbers: this.shuffle(initArray),
     };
     this.roll = this.roll.bind(this);
-    this.checkNumber = this.checkSum.bind(this);
-    this.checkNumber = this.checkSum2.bind(this);
+    this.checkSum = this.checkSum.bind(this);
+    this.checkSum2 = this.checkSum2.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.checkNumber = this.checkNumber.bind(this);
+    this.playAgain = this.playAgain.bind(this);
   }
+
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]: event.target.value,
+  //     completionStatus: "",
+  //   });
+  // }
 
   shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -135,6 +145,15 @@ class RollDice extends Component {
     this.setState({ title: "" });
   }
 
+  playAgain() {
+    this.setState({
+      completionStatus: "",
+      percentage: 0,
+      buttonColors: {},
+    });
+    this.roll();
+  }
+
   render() {
     let textForButton;
     if (this.state.isRolling) {
@@ -158,7 +177,10 @@ class RollDice extends Component {
 
     return (
       <div className="RollDice">
-        {this.state.percentage === 100 && <Confetti />}
+        <PlayAgain
+          open={this.state.percentage === 100}
+          handleClose={this.playAgain}
+        />
         <div
           style={{
             top: 0,
@@ -168,6 +190,7 @@ class RollDice extends Component {
         >
           {animatedElement}
         </div>
+
         <div>
           {this.props.numOfDices === 2 ? (
             <div className="RollDice-container">
