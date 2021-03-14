@@ -26,21 +26,11 @@ class RollDice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // die1: this.props.sides[
-      //   Math.floor(Math.random() * this.props.sides.length)
-      // ],
-      // die2: this.props.sides[
-      //   Math.floor(Math.random() * this.props.sides.length)
-      // ],
       die1: this.props.sides[idx1],
       die2: this.props.sides[idx2],
       die3: this.props.sides[idx3],
       sum: idx1 + idx2 + 2,
       sum2: idx1 + idx2 + idx3 + 3,
-      // sum:
-      //   this.props.sides.indexOf(this.state.die1) +
-      //   this.props.sides.indexOf(this.state.die2) +
-      //   2,
       isRolling: false,
       title: "",
       completionStatus: "",
@@ -49,39 +39,10 @@ class RollDice extends Component {
       randomNumbers: this.shuffle(initArray),
     };
     this.roll = this.roll.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.callFunction = this.callFunction.bind(this);
     this.checkNumber = this.checkSum.bind(this);
     this.checkNumber = this.checkSum2.bind(this);
   }
 
-  // handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value,
-  //     completionStatus: "",
-  //   });
-  // }
-
-  // callFunction(textInButton) {
-  //   if (textInButton === "Check") {
-  //     this.handleSubmit();
-  //   } else {
-  //     this.roll();
-  //   }
-  // }
-  // handleSubmit() {
-  //   // event.preventDefault();
-  //   if (parseInt(this.state.title) === this.state.sum) {
-  //     this.setState({
-  //       completionStatus: "correct",
-  //       percentage: this.state.percentage + 20,
-  //     });
-  //   } else {
-  //     this.setState({ completionStatus: "incorrect" });
-  //   }
-  //   this.setState({ title: "" });
-  // }
   shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -130,7 +91,6 @@ class RollDice extends Component {
         randomNumbers: this.shuffle(array),
       });
     }
-    // set state with new rolls and sum
 
     setTimeout(() => {
       this.setState({ isRolling: false });
@@ -226,9 +186,8 @@ class RollDice extends Component {
           )}
         </div>
 
-        {this.state.numOfDices === 2 ? (
+        {this.props.numOfDices === 2 ? (
           <div className="Numbers-container">
-            {/* <ul> */}
             {numbers.map((num) => {
               return (
                 <Number
@@ -240,11 +199,9 @@ class RollDice extends Component {
                 />
               );
             })}
-            {/* </ul> */}
           </div>
         ) : (
           <div className="Numbers-container">
-            {/* <ul> */}
             {this.state.randomNumbers.map((num, idx) => {
               return (
                 <Number
@@ -256,21 +213,8 @@ class RollDice extends Component {
                 />
               );
             })}
-            {/* </ul> */}
           </div>
         )}
-
-        {/* <div className="Form">
-          <form>
-            <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChange}
-              placeholder="?"
-            />
-          </form>
-        </div> */}
 
         <button
           className="Roll-button"

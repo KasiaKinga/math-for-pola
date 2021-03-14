@@ -6,7 +6,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      numberOfDices: 3,
+      numberOfDices: 2,
     };
   }
   render() {
