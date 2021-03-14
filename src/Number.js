@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import "./Number.css";
 
 const Number = (props) => {
-  const buttonSize = "2.5em";
+  const buttonSize = "2.2em";
   const buttonStyle = {
     ...{
       backgroundColor: "white",
@@ -25,7 +25,12 @@ const Number = (props) => {
 
   return (
     <div className="Number-wrapper">
-      <Button variant="contained" style={buttonStyle} onClick={props.onClick}>
+      <Button
+        variant="contained"
+        style={buttonStyle}
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
         {props.number}
       </Button>
     </div>
