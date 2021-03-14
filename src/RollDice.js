@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Die from "./Die";
 import CorrectElement from "./CorrectElement";
 import ProgressBar from "./ProgressBar";
-import Confetti from "./Confetti";
 import Number from "./Number";
+import PlayAgain from "./PlayAgain";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
@@ -20,19 +20,9 @@ class RollDice extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // die1: this.props.sides[
-      //   Math.floor(Math.random() * this.props.sides.length)
-      // ],
-      // die2: this.props.sides[
-      //   Math.floor(Math.random() * this.props.sides.length)
-      // ],
       die1: this.props.sides[idx1],
       die2: this.props.sides[idx2],
       sum: idx1 + idx2 + 2,
-      // sum:
-      //   this.props.sides.indexOf(this.state.die1) +
-      //   this.props.sides.indexOf(this.state.die2) +
-      //   2,
       isRolling: false,
       title: "",
       completionStatus: "",
@@ -41,9 +31,8 @@ class RollDice extends Component {
     };
     this.roll = this.roll.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.callFunction = this.callFunction.bind(this);
     this.checkNumber = this.checkNumber.bind(this);
+    this.playAgain = this.playAgain.bind(this);
   }
 
   handleChange(event) {
@@ -60,18 +49,6 @@ class RollDice extends Component {
       this.roll();
     }
   }
-  // handleSubmit() {
-  //   // event.preventDefault();
-  //   if (parseInt(this.state.title) === this.state.sum) {
-  //     this.setState({
-  //       completionStatus: "correct",
-  //       percentage: this.state.percentage + 20,
-  //     });
-  //   } else {
-  //     this.setState({ completionStatus: "incorrect" });
-  //   }
-  //   this.setState({ title: "" });
-  // }
 
   roll() {
     // pick 2 new rolls
@@ -114,6 +91,15 @@ class RollDice extends Component {
     }
     this.setState({ title: "" });
   }
+
+  playAgain() {
+    this.setState({
+      completionStatus: "",
+      percentage: 0,
+      buttonColors: {},
+    });
+  }
+
   render() {
     let textForButton;
     if (this.state.isRolling) {
@@ -137,7 +123,10 @@ class RollDice extends Component {
 
     return (
       <div className="RollDice">
-        {this.state.percentage === 100 && <Confetti />}
+        <PlayAgain
+          open={this.state.percentage === 100}
+          handleClose={this.playAgain}
+        />
         <div
           style={{
             top: 0,
@@ -166,20 +155,7 @@ class RollDice extends Component {
               />
             );
           })}
-          {/* </ul> */}
         </div>
-
-        {/* <div className="Form">
-          <form>
-            <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChange}
-              placeholder="?"
-            />
-          </form>
-        </div> */}
 
         <button
           className="Roll-button"
