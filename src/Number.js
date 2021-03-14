@@ -3,13 +3,11 @@ import "./Number.css";
 
 const Number = (props) => {
   return (
-    <button
-      className="Number-element"
-      onClick={props.onClick}
-      style={{ background: props.color }}
-    >
-      {props.number}
-    </button>
+    <div className="Number-element">
+      <button style={{ background: props.color }} onClick={props.onClick}>
+        {props.number}
+      </button>
+    </div>
   );
 };
 
