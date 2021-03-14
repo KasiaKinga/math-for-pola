@@ -3,10 +3,16 @@ import RollDice from "./RollDice";
 // import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      numberOfDices: 3,
+    };
+  }
   render() {
     return (
       <div className="App">
-        <RollDice />
+        <RollDice numOfDices={this.state.numberOfDices} />
       </div>
     );
   }

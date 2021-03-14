@@ -1,6 +1,6 @@
 .Die {
   font-size: 5em;
-  padding: 0.3em;
+  padding: 0.2em;
   color: slateblue;
 }
 
@@ -15,7 +15,7 @@
   }
 
   15% {
-    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -3deg);
   }
 
   30% {

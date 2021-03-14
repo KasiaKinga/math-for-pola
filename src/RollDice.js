@@ -12,6 +12,7 @@ import IncorrectElement from "./IncorrectElement";
 
 const idx1 = Math.floor(Math.random() * 6);
 const idx2 = Math.floor(Math.random() * 6);
+const idx3 = Math.floor(Math.random() * 6);
 
 class RollDice extends Component {
   static defaultProps = {
@@ -28,7 +29,9 @@ class RollDice extends Component {
       // ],
       die1: this.props.sides[idx1],
       die2: this.props.sides[idx2],
+      die3: this.props.sides[idx3],
       sum: idx1 + idx2 + 2,
+      sum2: idx1 + idx2 + idx3 + 3,
       // sum:
       //   this.props.sides.indexOf(this.state.die1) +
       //   this.props.sides.indexOf(this.state.die2) +
@@ -38,28 +41,29 @@ class RollDice extends Component {
       completionStatus: "",
       percentage: 0,
       buttonColors: {},
+      randomNumbers: [],
     };
     this.roll = this.roll.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.callFunction = this.callFunction.bind(this);
     this.checkNumber = this.checkNumber.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-      completionStatus: "",
-    });
-  }
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]: event.target.value,
+  //     completionStatus: "",
+  //   });
+  // }
 
-  callFunction(textInButton) {
-    if (textInButton === "Check") {
-      this.handleSubmit();
-    } else {
-      this.roll();
-    }
-  }
+  // callFunction(textInButton) {
+  //   if (textInButton === "Check") {
+  //     this.handleSubmit();
+  //   } else {
+  //     this.roll();
+  //   }
+  // }
   // handleSubmit() {
   //   // event.preventDefault();
   //   if (parseInt(this.state.title) === this.state.sum) {
@@ -77,19 +81,33 @@ class RollDice extends Component {
     // pick 2 new rolls
     const randomIdx1 = Math.floor(Math.random() * this.props.sides.length);
     const randomIdx2 = Math.floor(Math.random() * this.props.sides.length);
+    const randomIdx3 = Math.floor(Math.random() * this.props.sides.length);
 
     const newDie1 = this.props.sides[randomIdx1];
     const newDie2 = this.props.sides[randomIdx2];
-    console.log("sum", randomIdx1 + randomIdx2 + 2);
+    const newDie3 = this.props.sides[randomIdx3];
+
+    if (this.props.numOfDices === 2) {
+      this.setState({
+        die1: newDie1,
+        die2: newDie2,
+        sum: randomIdx1 + randomIdx2 + 2,
+        isRolling: true,
+        completionStatus: "",
+        buttonColors: {},
+      });
+    } else {
+      this.setState({
+        die1: newDie1,
+        die2: newDie2,
+        die3: newDie3,
+        sum2: randomIdx1 + randomIdx2 + randomIdx3 + 3,
+        isRolling: true,
+        completionStatus: "",
+        buttonColors: {},
+      });
+    }
     // set state with new rolls and sum
-    this.setState({
-      die1: newDie1,
-      die2: newDie2,
-      sum: randomIdx1 + randomIdx2 + 2,
-      isRolling: true,
-      completionStatus: "",
-      buttonColors: {},
-    });
 
     setTimeout(() => {
       this.setState({ isRolling: false });
@@ -147,10 +165,22 @@ class RollDice extends Component {
         >
           {animatedElement}
         </div>
-        <div className="RollDice-container">
-          <Die face={this.state.die1} rolling={this.state.isRolling} />
-          <i className="Symbol fas fa-plus"></i>
-          <Die face={this.state.die2} rolling={this.state.isRolling} />
+        <div>
+          {this.props.numOfDices === 2 ? (
+            <div className="RollDice-container">
+              <Die face={this.state.die1} rolling={this.state.isRolling} />
+              <i className="Symbol fas fa-plus"></i>
+              <Die face={this.state.die2} rolling={this.state.isRolling} />
+            </div>
+          ) : (
+            <div className="RollDice-container">
+              <Die face={this.state.die1} rolling={this.state.isRolling} />
+              <i className="Symbol fas fa-plus"></i>
+              <Die face={this.state.die2} rolling={this.state.isRolling} />
+              <i className="Symbol fas fa-plus"></i>
+              <Die face={this.state.die3} rolling={this.state.isRolling} />
+            </div>
+          )}
         </div>
 
         <div className="Numbers-container">
