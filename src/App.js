@@ -10,8 +10,15 @@ class App extends Component {
     };
   }
   render() {
+    // const roll2dices = () => {
+    //   <RollDice numOfDices={2} />;
+    // };
+    // const roll3dices = () => {
+    //   <RollDice numOfDices={3} />;
+    // };
     return (
       <div className="App">
+        {/* <Route exact path="/" component={home} /> */}
         <RollDice numOfDices={this.state.numberOfDices} />
       </div>
     );

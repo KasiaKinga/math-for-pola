@@ -14,6 +14,11 @@ const idx1 = Math.floor(Math.random() * 6);
 const idx2 = Math.floor(Math.random() * 6);
 const idx3 = Math.floor(Math.random() * 6);
 
+const randomNum1 = Math.ceil(Math.random() * 18);
+const randomNum2 = Math.ceil(Math.random() * 18);
+
+const initArray = [randomNum1, randomNum2, idx1 + idx2 + idx3 + 3];
+
 class RollDice extends Component {
   static defaultProps = {
     sides: ["one", "two", "three", "four", "five", "six"],
@@ -41,13 +46,14 @@ class RollDice extends Component {
       completionStatus: "",
       percentage: 0,
       buttonColors: {},
-      randomNumbers: [],
+      randomNumbers: this.shuffle(initArray),
     };
     this.roll = this.roll.bind(this);
     // this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
     // this.callFunction = this.callFunction.bind(this);
-    this.checkNumber = this.checkNumber.bind(this);
+    this.checkNumber = this.checkSum.bind(this);
+    this.checkNumber = this.checkSum2.bind(this);
   }
 
   // handleChange(event) {
@@ -76,6 +82,17 @@ class RollDice extends Component {
   //   }
   //   this.setState({ title: "" });
   // }
+  shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+      // swap elements array[i] and array[j]
+      // we use "destructuring assignment" syntax to achieve that
+      // same can be written as:
+      // let t = array[i]; array[i] = array[j]; array[j] = t
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   roll() {
     // pick 2 new rolls
@@ -97,6 +114,11 @@ class RollDice extends Component {
         buttonColors: {},
       });
     } else {
+      //random nums from 1-18
+      const num1 = Math.ceil(Math.random() * 18);
+      const num2 = Math.ceil(Math.random() * 18);
+      const array = [num1, num2, randomIdx1 + randomIdx2 + randomIdx3 + 3];
+
       this.setState({
         die1: newDie1,
         die2: newDie2,
@@ -105,6 +127,7 @@ class RollDice extends Component {
         isRolling: true,
         completionStatus: "",
         buttonColors: {},
+        randomNumbers: this.shuffle(array),
       });
     }
     // set state with new rolls and sum
@@ -114,7 +137,7 @@ class RollDice extends Component {
     }, 1000);
   }
 
-  checkNumber(num) {
+  checkSum(num) {
     if (num === this.state.sum) {
       this.setState({
         completionStatus: "correct",
@@ -132,6 +155,26 @@ class RollDice extends Component {
     }
     this.setState({ title: "" });
   }
+
+  checkSum2(num) {
+    if (num === this.state.sum2) {
+      this.setState({
+        completionStatus: "correct",
+        percentage: this.state.percentage + 20,
+        buttonColors: { ...this.state.buttonColors, ...{ [num]: "#a4dd00" } },
+      });
+    } else {
+      this.setState({
+        completionStatus: "incorrect",
+        buttonColors: {
+          ...this.state.buttonColors,
+          ...{ [num]: "lightskyblue" },
+        },
+      });
+    }
+    this.setState({ title: "" });
+  }
+
   render() {
     let textForButton;
     if (this.state.isRolling) {
@@ -183,21 +226,39 @@ class RollDice extends Component {
           )}
         </div>
 
-        <div className="Numbers-container">
-          {/* <ul> */}
-          {numbers.map((num) => {
-            return (
-              <Number
-                key={num}
-                number={num}
-                disabled={this.state.completionStatus === "correct"}
-                color={this.state.buttonColors[num]}
-                onClick={() => this.checkNumber(num)}
-              />
-            );
-          })}
-          {/* </ul> */}
-        </div>
+        {this.state.numOfDices === 2 ? (
+          <div className="Numbers-container">
+            {/* <ul> */}
+            {numbers.map((num) => {
+              return (
+                <Number
+                  key={num}
+                  number={num}
+                  disabled={this.state.completionStatus === "correct"}
+                  color={this.state.buttonColors[num]}
+                  onClick={() => this.checkSum(num)}
+                />
+              );
+            })}
+            {/* </ul> */}
+          </div>
+        ) : (
+          <div className="Numbers-container">
+            {/* <ul> */}
+            {this.state.randomNumbers.map((num, idx) => {
+              return (
+                <Number
+                  key={idx}
+                  number={num}
+                  disabled={this.state.completionStatus === "correct"}
+                  color={this.state.buttonColors[num]}
+                  onClick={() => this.checkSum2(num)}
+                />
+              );
+            })}
+            {/* </ul> */}
+          </div>
+        )}
 
         {/* <div className="Form">
           <form>
