@@ -9,9 +9,9 @@ function CorrectElement() {
   });
 
   return (
-    <div style={{ background: "#a4dd00" }}>
+    <div className="CorrectBar">
       <animated.div style={props}>
-        <h1 className="CorrectBar">
+        <h1>
           Brawo! <br />
           Grasz dalej?
         </h1>

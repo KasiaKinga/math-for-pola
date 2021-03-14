@@ -9,9 +9,9 @@ function IncorrectElement() {
   });
 
   return (
-    <div style={{ background: "lightskyblue" }}>
+    <div className="IncorrectBar">
       <animated.div style={props}>
-        <h1 className="IncorrectBar">
+        <h1>
           Jesteś blisko. <br />
           Spróbuj policzyć jeszcze raz
         </h1>
