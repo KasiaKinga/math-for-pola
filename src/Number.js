@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import "./Number.css";
 
 const Number = (props) => {
+  const buttonSize = "2.5em";
   const buttonStyle = {
     ...{
       backgroundColor: "white",
@@ -11,10 +12,10 @@ const Number = (props) => {
       boxShadow: "2px 3px #888888",
       border: "2px solid #888888",
       fontSize: "1.2em",
-      maxWidth: "2em",
-      maxHeight: "2em",
-      minWidth: "2em",
-      minHeight: "2em",
+      maxWidth: buttonSize,
+      maxHeight: buttonSize,
+      minWidth: buttonSize,
+      minHeight: buttonSize,
       cursor: "pointer",
     },
     ...{

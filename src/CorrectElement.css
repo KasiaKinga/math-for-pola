@@ -1,14 +1,14 @@
 .CorrectBar {
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   background: #a4dd00;
   /* border: 2px solid blue; */
 }
 
 .CorrectBar h1 {
   color: white;
-  height: 6em;
+  height: 4em;
   color: "black";
   font-size: 1em;
   text-align: center;
