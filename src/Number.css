@@ -6,10 +6,17 @@
   flex-wrap: wrap;
   padding-left: 2em;
   padding-right: 2em;
-  /* border: 2px solid red; */
 }
 
 .Number-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.2em;
+  text-align: center;
+}
+
+.Number-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +34,7 @@
   background: white;
   border-radius: 0.3em;
   color: #888888;
-  /* box-shadow: 2px 3px #888888; */
+  box-shadow: 2px 3px #888888;
   cursor: pointer;
   /* this disable the button select highlight color */
   outline: none;
