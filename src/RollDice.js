@@ -160,6 +160,7 @@ class RollDice extends Component {
               <Number
                 key={num}
                 number={num}
+                disabled={this.state.completionStatus === "correct"}
                 color={this.state.buttonColors[num]}
                 onClick={() => this.checkNumber(num)}
               />

@@ -10,7 +10,7 @@
 
 .RollDice-container {
   display: flex;
-  margin-top: 20vh;
+  margin-top: 10vh;
   justify-content: center;
   align-content: center;
   /* border: 2px solid green; */
@@ -34,4 +34,6 @@
 .Progress-bar-container {
   width: 100%;
   text-align: center;
+  margin-bottom: 15vh;
+  /* border: 2px solid green; */
 }

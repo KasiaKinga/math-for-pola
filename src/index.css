@@ -7,3 +7,15 @@ body,
   min-width: 100%;
   min-height: 100%;
 }
+
+html,
+body {
+  /* this disables the scrolling */
+  overflow: hidden;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  /* border: 2px solid red; */
+}
