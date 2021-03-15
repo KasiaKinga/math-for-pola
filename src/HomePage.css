@@ -40,7 +40,9 @@
   align-items: center;
   text-decoration: none;
   padding: 1em;
+  outline: none;
 }
+
 .Back-for-img1 {
   height: 6em;
   width: 6em;
