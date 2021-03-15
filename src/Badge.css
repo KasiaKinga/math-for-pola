@@ -10,8 +10,7 @@
 
 .Badge img {
   height: 5em;
-  width: 5em;
-  animation-name: img-animation;
+  width: 5em;  
   animation-duration: 0.5s;  
   animation-timing-function: linear;
 }
@@ -24,8 +23,7 @@
   100% {width: 5em; height: 5em;}
 }
 
-.Badge p {
-  /* position: absolute; */
+.Badge p {  
   margin-top: 0.3em;
   font-weight: 600;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
