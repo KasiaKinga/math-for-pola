@@ -47,7 +47,7 @@ const PlayAgain = (props) => {
             {open && <Confetti />}
             <h2>Gratulacje!</h2>
             <Button variant="contained" onClick={handleClose}>
-              Gram dalej
+              Grasz dalej?
             </Button>
           </div>
         </Fade>

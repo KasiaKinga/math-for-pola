@@ -10,7 +10,7 @@
 
 .RollDice-container {
   display: flex;
-  margin-top: 10vh;
+  /* margin-top: 10vh; */
   justify-content: center;
   align-content: center;
   /* border: 2px solid green; */
@@ -37,4 +37,10 @@
   text-align: center;
   margin-bottom: 15vh;
   /* border: 2px solid green; */
+}
+
+.Arrow-back {
+  font-size: 3em;
+  margin-left: 0.5em;
+  z-index: 1000;
 }

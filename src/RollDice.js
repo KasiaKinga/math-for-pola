@@ -9,6 +9,8 @@ import {
   setNextBadgeInLocalStorage,
   getCurrentBadgeFromLocalStorage,
 } from "./Badge";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { Link } from "react-router-dom";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
@@ -194,6 +196,9 @@ class RollDice extends Component {
 
     return (
       <div className="RollDice">
+        <Link to="/" className="Arrow-back">
+          <ArrowBackIcon />
+        </Link>
         <Badge currentBadge={this.state.currentBadge} />
         <PlayAgain
           open={this.state.percentage === 100}
