@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import reading from "./images/reading.png";
 import princess from "./images/princess.png";
@@ -8,9 +8,9 @@ import "./Badge.css";
 
 const BADGE_LOCAL_STORAGE_KEY = "currentBadge";
 
-const badgeOrderedArray = ["Girl", "Princess", "Queen"];
+const badgeOrderedArray = ["Little Girl", "Princess", "Queen"];
 const badgeMap = {
-  Girl: reading,
+  "Little Girl": reading,
   Princess: princess,
   Queen: queen,
 };
@@ -20,7 +20,7 @@ export const getCurrentBadgeFromLocalStorage = () => {
 
   if (!currentBadgeFromLocal) {
     // if none, assuming it's the first time loading it, therefore defaults to Beginner
-    localStorage.setItem(BADGE_LOCAL_STORAGE_KEY, "Girl");
+    localStorage.setItem(BADGE_LOCAL_STORAGE_KEY, "Little Girl");
     currentBadgeFromLocal = localStorage.getItem(BADGE_LOCAL_STORAGE_KEY);
   }
 
@@ -40,12 +40,19 @@ export const setNextBadgeInLocalStorage = (currentBadge) => {
 };
 
 export const Badge = (props) => {
+  const [loaded, setLoaded] = useState(false);
   const { currentBadge } = props;
+  console.log("loaded: ", loaded);
 
   return (
     <div className="Badge">
-      <img src={badgeMap[currentBadge]} alt="current badge" />
-      <p>{currentBadge}</p>
+      <img
+        src={badgeMap[currentBadge]}
+        alt="current badge"
+        onLoad={() => setLoaded(true)}
+        style={loaded ? {} : { display: "none" }}
+      />
+      {loaded ? <p>{currentBadge}</p> : null}
     </div>
   );
 };
