@@ -15,7 +15,18 @@
 .Badge img {
   height: 5em;
   width: 5em;
+  animation-name: img-animation;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
   /* border: 2px solid red */
+}
+
+@keyframes img-animation {
+  0%   {width: 5em; height: 1em;}
+  25%  {width: 5em; height: 2em;}
+  50%  {width: 5em; height: 3em;}  
+  75%  {width: 5em; height: 4em;}  
+  100% {width: 5em; height: 5em;}
 }
 
 .Badge p {
