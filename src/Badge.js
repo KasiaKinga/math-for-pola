@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import reading from "./images/reading.png";
 import princess from "./images/princess.png";
@@ -41,7 +41,16 @@ export const setNextBadgeInLocalStorage = (currentBadge) => {
 
 export const Badge = (props) => {
   const [loaded, setLoaded] = useState(false);
-  const { currentBadge } = props;  
+  const { currentBadge } = props;
+
+  useEffect(() => {
+    // preload the image first, so when you get to the next badge there will be no delay to
+    // download the images from the device
+    const imageList = [reading, princess, queen];
+    imageList.forEach((image) => {
+      new Image().src = image;
+    });
+  }, []);
 
   return (
     <div className="Badge">
