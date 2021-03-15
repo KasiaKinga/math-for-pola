@@ -1,27 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import RollDice from "./RollDice";
+import HomePage from "./HomePage";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      numberOfDices: 2,
-    };
-  }
-  render() {
-    // const roll2dices = () => {
-    //   <RollDice numOfDices={2} />;
-    // };
-    // const roll3dices = () => {
-    //   <RollDice numOfDices={3} />;
-    // };
-    return (
+const App = () => {
+  const roll2dices = () => {
+    return <RollDice numOfDices={2} />;
+  };
+  const roll3dices = () => {
+    return <RollDice numOfDices={3} />;
+  };
+
+  return (
+    <Router>
       <div className="App">
-        {/* <Route exact path="/" component={home} /> */}
-        <RollDice numOfDices={this.state.numberOfDices} />
+        <main>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/2kostki" component={roll2dices} />
+          <Route exact path="/3kostki" component={roll3dices} />
+        </main>
       </div>
-    );
-  }
-}
+    </Router>
+  );
+};
 
 export default App;
