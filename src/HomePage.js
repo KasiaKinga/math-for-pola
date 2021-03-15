@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import bird from "./images/bird.png";
+import squirrel from "./images/squirrel.png";
+
 import "./HomePage.css";
-// import img from "../public/robin.png";
 
 const HomePage = (props) => {
   return (
@@ -17,7 +20,7 @@ const HomePage = (props) => {
       <div>
         <Link to="/2kostki" className="Link">
           <div className="Back-for-img1">
-            <img src={require("./bird.png").default} className="Image"></img>
+            <img src={bird} alt={"bird"} className="Image"></img>
           </div>
           <p>Liczby od 1-12</p>
         </Link>
@@ -27,7 +30,8 @@ const HomePage = (props) => {
         <Link to="/3kostki" className="Link">
           <div className="Back-for-img2">
             <img
-              src={require("./squirrel.png").default}
+              src={squirrel}
+              alt={"squirrel"}
               className="Image"
               style={{ color: "red" }}
             ></img>

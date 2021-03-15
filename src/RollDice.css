@@ -10,7 +10,7 @@
 
 .RollDice-container {
   display: flex;
-  margin-top: -5vh;
+  margin-top: 5vh;
   justify-content: center;
   align-content: center;
   /* border: 2px solid green; */

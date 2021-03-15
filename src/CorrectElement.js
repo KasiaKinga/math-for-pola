@@ -13,7 +13,7 @@ function CorrectElement() {
       <animated.div style={props}>
         <h1>
           Brawo! <br />
-          To jest poprawna odpowiedź!
+          To poprawna odpowiedź!
         </h1>
       </animated.div>
     </div>

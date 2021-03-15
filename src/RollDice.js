@@ -198,7 +198,7 @@ class RollDice extends Component {
       <div className="RollDice">
         <div className="Arrow-back">
           <Link to="/">
-            <ArrowBackIcon fontSize="large" />
+            <ArrowBackIcon fontSize="large" color={"action"} />
           </Link>
         </div>
         <Badge currentBadge={this.state.currentBadge} />
