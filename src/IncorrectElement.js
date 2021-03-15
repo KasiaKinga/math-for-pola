@@ -13,7 +13,7 @@ function IncorrectElement() {
       <animated.div style={props}>
         <h1>
           Jesteś blisko. <br />
-          Spróbuj policzyć jeszcze raz
+          Spróbuj jeszcze raz
         </h1>
       </animated.div>
     </div>

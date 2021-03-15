@@ -1,4 +1,4 @@
-.Badge {
+.Badge div {
   position: absolute;
   z-index: 1000;
   display: flex;
@@ -6,26 +6,41 @@
   justify-content: center;
   align-items: center;
   top: 1em;
-  right: 1em;  
+  right: 1em;
 }
 
 .Badge img {
   height: 5em;
-  width: 5em;  
-  animation-duration: 0.5s;  
+  width: 5em;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
 }
 
 @keyframes img-animation {
-  0%   {width: 5em; height: 1em;}
-  25%  {width: 5em; height: 2em;}
-  50%  {width: 5em; height: 3em;}  
-  75%  {width: 5em; height: 4em;}  
-  100% {width: 5em; height: 5em;}
+  0% {
+    width: 5em;
+    height: 1em;
+  }
+  25% {
+    width: 5em;
+    height: 2em;
+  }
+  50% {
+    width: 5em;
+    height: 3em;
+  }
+  75% {
+    width: 5em;
+    height: 4em;
+  }
+  100% {
+    width: 5em;
+    height: 5em;
+  }
 }
 
-.Badge p {  
+.Badge p {
   margin-top: 0.3em;
   font-weight: 600;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
