@@ -18,12 +18,13 @@
 
 .Roll-button {
   align-self: center;
-  width: 15em;
-  padding: 1.5em;
+  width: 8em;
+  padding: 0.5em 0em;
   border: 0px;
   border-radius: 10px;
   color: white;
   background-color: darkslateblue;
+  font-size: 20px;
 }
 
 .Roll-button:hover {

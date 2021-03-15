@@ -4,6 +4,11 @@ import CorrectElement from "./CorrectElement";
 import ProgressBar from "./ProgressBar";
 import Number from "./Number";
 import PlayAgain from "./PlayAgain";
+import {
+  Badge,
+  setNextBadgeInLocalStorage,
+  getCurrentBadgeFromLocalStorage,
+} from "./Badge";
 import "./RollDice.css";
 import "./Symbol.css";
 import "./Form.css";
@@ -37,6 +42,7 @@ class RollDice extends Component {
       percentage: 0,
       buttonColors: {},
       randomNumbers: this.shuffle(initArray),
+      currentBadge: "",
     };
     this.roll = this.roll.bind(this);
     this.checkSum = this.checkSum.bind(this);
@@ -44,6 +50,14 @@ class RollDice extends Component {
     // this.handleChange = this.handleChange.bind(this);
     // this.checkNumber = this.checkNumber.bind(this);
     this.playAgain = this.playAgain.bind(this);
+  }
+
+  componentDidMount() {
+    // get the current badge when component first mounts
+    const currentBadge = getCurrentBadgeFromLocalStorage();
+    this.setState({
+      currentBadge,
+    });
   }
 
   // handleChange(event) {
@@ -146,10 +160,13 @@ class RollDice extends Component {
   }
 
   playAgain() {
+    setNextBadgeInLocalStorage(this.state.currentBadge);
+
     this.setState({
       completionStatus: "",
       percentage: 0,
       buttonColors: {},
+      currentBadge: getCurrentBadgeFromLocalStorage(),
     });
     this.roll();
   }
@@ -177,6 +194,7 @@ class RollDice extends Component {
 
     return (
       <div className="RollDice">
+        <Badge currentBadge={this.state.currentBadge} />
         <PlayAgain
           open={this.state.percentage === 100}
           handleClose={this.playAgain}
