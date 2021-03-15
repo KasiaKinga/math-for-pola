@@ -45,9 +45,9 @@ const PlayAgain = (props) => {
         <Fade in={open}>
           <div className={classes.paper}>
             {open && <Confetti />}
-            <h2>So smart!</h2>
+            <h2>Gratulacje!</h2>
             <Button variant="contained" onClick={handleClose}>
-              Keep Playing
+              Gram dalej
             </Button>
           </div>
         </Fade>

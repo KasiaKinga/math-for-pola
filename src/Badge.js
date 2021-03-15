@@ -8,11 +8,11 @@ import "./Badge.css";
 
 const BADGE_LOCAL_STORAGE_KEY = "currentBadge";
 
-const badgeOrderedArray = ["Little Girl", "Princess", "Queen"];
+const badgeOrderedArray = ["Pico", "Mila", "Deci"];
 const badgeMap = {
-  "Little Girl": reading,
-  Princess: princess,
-  Queen: queen,
+  Pico: reading,
+  Mila: princess,
+  Deci: queen,
 };
 
 export const getCurrentBadgeFromLocalStorage = () => {
@@ -20,7 +20,7 @@ export const getCurrentBadgeFromLocalStorage = () => {
 
   if (!currentBadgeFromLocal) {
     // if none, assuming it's the first time loading it, therefore defaults to Beginner
-    localStorage.setItem(BADGE_LOCAL_STORAGE_KEY, "Little Girl");
+    localStorage.setItem(BADGE_LOCAL_STORAGE_KEY, "Pico");
     currentBadgeFromLocal = localStorage.getItem(BADGE_LOCAL_STORAGE_KEY);
   }
 
@@ -49,9 +49,8 @@ export const Badge = (props) => {
         // hiding the rest. this achieves the image-preload so when going to the next badge there will
         // be no delay of loading.
         return (
-          <>
+          <div key={badgeName}>
             <img
-              key={badgeName}
               src={badgeMap[badgeName]}
               alt="current badge"
               // if it's the current badge then start the animation, otherwise don't display
@@ -64,7 +63,7 @@ export const Badge = (props) => {
               }
             />
             {currentBadge === badgeName ? <p>{currentBadge}</p> : null}
-          </>
+          </div>
         );
       })}
     </div>
