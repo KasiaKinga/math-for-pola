@@ -6,10 +6,6 @@
   align-items: center;
   top: 1em;
   right: 1em;  
-  /* border: 2px solid #888888; */
-  border-radius: 10px;
-  /* height: 7em;
-  width: 5em; */
 }
 
 .Badge img {
@@ -18,7 +14,6 @@
   animation-name: img-animation;
   animation-duration: 0.5s;
   animation-timing-function: linear;
-  /* border: 2px solid red */
 }
 
 @keyframes img-animation {

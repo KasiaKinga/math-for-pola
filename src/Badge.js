@@ -41,12 +41,14 @@ export const setNextBadgeInLocalStorage = (currentBadge) => {
 
 export const Badge = (props) => {
   const [loaded, setLoaded] = useState(false);
-  const { currentBadge } = props;
-  console.log("loaded: ", loaded);
+  const { currentBadge } = props;  
 
   return (
     <div className="Badge">
       <img
+        // the key prop is required so react knows to reload the img when a new img is specified,
+        // so we can see the animation again
+        key={currentBadge}
         src={badgeMap[currentBadge]}
         alt="current badge"
         onLoad={() => setLoaded(true)}
