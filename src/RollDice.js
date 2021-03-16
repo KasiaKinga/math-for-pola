@@ -196,9 +196,11 @@ class RollDice extends Component {
 
     return (
       <div className="RollDice">
-        <Link to="/" className="Arrow-back">
-          <ArrowBackIcon />
-        </Link>
+        <div className="Arrow-back">
+          <Link to="/">
+            <ArrowBackIcon fontSize="large" color={"action"} />
+          </Link>
+        </div>
         <Badge currentBadge={this.state.currentBadge} />
         <PlayAgain
           open={this.state.percentage === 100}
