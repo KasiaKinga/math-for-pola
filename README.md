@@ -21,7 +21,6 @@ The app is responsive so it can be open on the phone, tablet and desktop. The us
 
 - [React](https://reactjs.org/) - JS library
 
-<!-- ![gif](P+.gif) -->
 <img src="./P+2.gif" width="550" />
 
 
