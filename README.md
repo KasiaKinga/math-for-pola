@@ -1,6 +1,8 @@
 # P+
 Responsive game for kids aged 6 years old to practice maths operations
 
+<img src="./P+2.gif" width="550" />
+
 [Visit the site](http://game-for-pola.herokuapp.com/)
 
 I developed this app for my niece who asked me for tool to practice math operations on smaller and larger groups of numbers. The app was relatively easy to implement, in a familiar tech stack (React), without adding too many features and complicated functionality. However, I truly enjoyed the building process by putting together my design and coding skills. I built an interface that is easy to understand and fun to play with for the kid, and I added some gamification to make the overall learning experience more pleasant by adding points and badges for achievements.
@@ -21,6 +23,6 @@ The app is responsive so it can be open on the phone, tablet and desktop. The us
 
 - [React](https://reactjs.org/) - JS library
 
-<img src="./P+2.gif" width="550" />
+
 
 
