@@ -1,7 +1,7 @@
 # P+
 Responsive game for kids aged 6 years old to practice maths operations
 
-<img src="./P+2.gif" width="550" />
+<img src="./P+2.gif" width="450" />
 
 [Visit the site](http://game-for-pola.herokuapp.com/)
 
