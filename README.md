@@ -1,5 +1,5 @@
 # P+
-Responsive game for kids aged 6 years old to practice maths operations
+Responsive game for kids aged 6-year-old to practice maths operations
 
 <img src="./P+2.gif" width="450" />
 
